@@ -13,12 +13,9 @@ public class FinalProject {
 
     @BeforeMethod
     public void setUp() {
-        // Set Selenide configuration for the default timeout
-        com.codeborne.selenide.Configuration.timeout = 5000;
-        // Use Chrome browser
+        com.codeborne.selenide.Configuration.timeout = 10000;
         com.codeborne.selenide.Configuration.browser = "chrome";
 
-        // Initialize page objects
         homePage = new HomePage();
         loginPage = new LoginPage();
         registrationPage = new RegistrationPage();
@@ -41,7 +38,7 @@ public class FinalProject {
         homePage.openPage();
         homePage.clickLoginButton();
         loginPage.clickRegistrationButton();
-        registrationPage.clickIndividualButton();
+        registrationPage.clickPhysPersonButton();
         registrationPage.clickRegistrationButton();
         registrationPage.verifyEmailCheckboxChecked();
         registrationPage.verifyErrorMessageDisplayed();
@@ -56,8 +53,6 @@ public class FinalProject {
         searchPage.clickSearchButton();
         searchPage.verifyPricesInRange(170, 180);
     }
-
-    // Page Objects
 
     public class HomePage {
         public void openPage() {
@@ -100,7 +95,7 @@ public class FinalProject {
     }
 
     public class RegistrationPage {
-        public void clickIndividualButton() {
+        public void clickPhysPersonButton() {
             $("a[class='profile-tabs__link ui-tabs-anchor']").shouldBe(visible).click();
         }
 
